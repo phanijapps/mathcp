@@ -1,4 +1,4 @@
-# Math Genius Backend Architecture (Python 3.12)
+just# Math Genius Backend Architecture (Python 3.12)
 
 ## 1. Overview
 A modular, extensible Python 3.12 backend library for foundational to advanced mathematics, designed for clean API exposure and future integration with frontend or MCP interfaces.
@@ -135,15 +135,71 @@ math_genius/
         api_reference.md
 ```
 
-## 9. Next Steps
+## 9. Component Separation: MCP Integration
+
+### 9.1 Separation of Concerns Architecture
+To maintain clean separation between the core mathematical library and protocol-specific interfaces, we will create two distinct components:
+
+1. **`mathgenius`** - Core mathematical library (existing)
+2. **`mgenius-mcp`** - MCP (Model Context Protocol) wrapper component
+
+### 9.2 MCP Component Structure
+```
+mgenius-mcp/
+├── __init__.py
+├── server.py                  # MCP server implementation
+├── tools.py                   # MCP tool definitions (all math tools)
+├── handlers.py                # MCP request handlers
+├── config.py                  # MCP configuration
+├── tests/                     # MCP-specific tests
+├── pyproject.toml             # MCP package config
+└── README.md                  # MCP setup guide
+```
+
+### 9.3 Integration Pattern
+```mermaid
+graph TB
+    MCP[MCP Client] -->|protocol| MCPS[MCP Server - mgenius-mcp]
+    MCPS -->|imports| MGD[mathgenius.api.dispatcher]
+    MGD -->|calls| MG[mathgenius core library]
+    
+    subgraph "mgenius-mcp (root level)"
+        MCPS
+        MCPTools[MCP Tools]
+        MCPHandlers[MCP Handlers]
+    end
+    
+    subgraph "mathgenius (root level)"
+        MGD
+        MG
+        MGCore[Core Math Functions]
+    end
+```
+
+### 9.4 Design Principles for MCP Component
+- **Protocol Isolation**: MCP-specific logic contained entirely in `mgenius-mcp` at root level
+- **Clean Interface**: Uses `mathgenius.api.dispatcher` as the integration point
+- **Independent Deployment**: Can be deployed separately from core library
+- **Version Independence**: MCP wrapper can evolve independently of core math library
+- **Simple Structure**: Flat file structure for easy maintenance and deployment
+
+### 9.5 Benefits of This Separation
+1. **Maintainability**: Changes to MCP protocol don't affect core math library
+2. **Reusability**: Core library can be used by other interfaces (REST, GraphQL, etc.)
+3. **Testing**: Each component can be tested independently
+4. **Deployment**: Components can be deployed to different environments
+5. **Team Structure**: Different teams can work on each component
+
+## 10. Next Steps
 - Scaffold the directory and module structure
 - Implement core arithmetic/algebra modules
 - Set up testing and documentation frameworks
-- Plan for future REST/MCP exposure
+- Create mgenius-mcp module at root level alongside mathgenius
+- Implement MCP server and tool definitions
 
 ---
 
-## 10. Deployment Options (AWS)
+## 11. Deployment Options (AWS)
 
 ### Option 1: AWS Lambda (Serverless)
 - **Best for:** Stateless, scalable, pay-per-use math API

@@ -62,6 +62,21 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 
 **File:** `docs/story-3-advanced-mathematics.md`
 
+### Story 4: FastMCP Integration for Math Tools
+**Status:** Ready for Development  
+**Priority:** Medium  
+**Estimated Effort:** 3-4 development sessions  
+**Dependencies:** Stories 1, 2 & 3 must be completed first  
+
+**Scope:** Create FastMCP server to expose all MathGenius tools via Model Context Protocol
+- FastMCP server setup and configuration
+- Automatic tool discovery and registration from MathGenius dispatcher
+- JSON schema generation for all mathematical operations
+- MCP-compliant error handling and response formatting
+- Tool categorization and documentation for MCP clients
+
+**File:** `docs/story-4-mcp-integration.md`
+
 ## Epic Acceptance Criteria
 
 **Functional Requirements:**
@@ -75,6 +90,7 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 - [ ] Mathematical functions follow standard clean API design patterns
 - [ ] Function discovery and execution working correctly across all mathematical domains
 - [ ] No conflicts between different mathematical function categories
+- [ ] MCP server successfully exposes all mathematical tools via FastMCP protocol
 
 **Quality Requirements:**
 - [ ] Comprehensive test coverage for all mathematical operations
@@ -99,6 +115,11 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 - Implement performance optimizations
 - Complete comprehensive testing and documentation
 
+**Phase 4 (Weeks 8-9):** MCP Integration
+- Complete Story 4: FastMCP Integration for Math Tools
+- Implement MCP server with tool discovery and registration
+- Validate MCP protocol compliance and client compatibility
+
 ## Risk Mitigation
 
 **Primary Risk:** Mathematical accuracy and precision in calculations
@@ -113,13 +134,14 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 
 ## Definition of Done
 
-- [ ] All three stories completed with acceptance criteria met
+- [ ] All four stories completed with acceptance criteria met
 - [ ] Mathematical library interface functional and easily integrable
 - [ ] Mathematical accuracy verified through comprehensive testing
 - [ ] Documentation includes usage examples and API reference
 - [ ] Functions are accessible and functional across all targeted math levels
 - [ ] Performance is acceptable for typical use cases
 - [ ] No breaking changes to existing mathematical function interfaces
+- [ ] MCP server successfully exposes all mathematical tools via FastMCP protocol
 
 ## Success Metrics
 
@@ -133,6 +155,7 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 - 100% clean API design compliance
 - Zero breaking changes to existing mathematical function interfaces
 - Successful library integration and function execution by test applications
+- MCP server compatibility with popular AI assistants and MCP clients
 
 **Quality Metrics:**
 - Mathematical accuracy verified against known results
@@ -142,6 +165,6 @@ Create a comprehensive, foundational math problem-solving toolkit that spans gra
 ---
 
 **Epic Status:** Ready for Development  
-**Total Estimated Effort:** 6-9 development sessions  
-**Target Completion:** 7 weeks  
-**Last Updated:** July 16, 2025
+**Total Estimated Effort:** 9-13 development sessions  
+**Target Completion:** 9 weeks  
+**Last Updated:** July 17, 2025
