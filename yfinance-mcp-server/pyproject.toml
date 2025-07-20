@@ -1,0 +1,45 @@
+[project]
+name = "yfinance-mcp-server"
+version = "0.1.0"
+description = "A comprehensive yfinance MCP server for stock analysis and financial calculations"
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+dependencies = [
+        "fastmcp>=2.10.6",
+    "yfinance>=0.2.28",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "scikit-learn>=1.3.0",
+    "matplotlib>=3.7.0",
+    "plotly>=5.15.0",
+    "ta>=0.10.2",
+    "python-dateutil>=2.8.0",
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "feedparser>=6.0.0",
+    "pydantic>=2.0.0",
+    "aiohttp>=3.8.0",
+    "asyncio-throttle>=1.0.0",
+    "pydantic>=2.5.0",
+    "sympy>=1.12",
+    "matplotlib>=3.7.0",
+    "mathgenius>=0.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+yfinance-mcp-server = "yfinance_mcp_server.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

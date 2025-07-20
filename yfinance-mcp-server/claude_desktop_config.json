@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "yfinance-mcp-server": {
+      "command": "/Users/phani.jammulamadaka/math-genius/.venv/bin/python",
+      "args": [
+        "-m",
+        "yfinance_mcp_server.server"
+      ],
+      "cwd": "/Users/phani.jammulamadaka/math-genius/yfinance-mcp-server",
+      "env": {
+        "PYTHONPATH": "/Users/phani.jammulamadaka/math-genius/yfinance-mcp-server"
+      }
+    }
+  }
+}
