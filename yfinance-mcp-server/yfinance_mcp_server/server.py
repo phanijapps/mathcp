@@ -14,7 +14,7 @@ calculator_service = FinancialCalculators()
 config = get_config()
 
 # Create FastMCP server
-mcp = FastMCP("yfinance-mcp-server")
+mcp = FastMCP("yfinance-mcp-server", port=8002)
 
 
 @mcp.tool()
@@ -138,4 +138,4 @@ async def calculate_financial_ratios(
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="sse")

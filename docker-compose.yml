@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - math-mcp-server
+      - yfinance-mcp-server
+
+  math-mcp-server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.math
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./mathgenius:/app/mathgenius
+      - ./math-mcp-server:/app/math-mcp-server
+    
+
+  yfinance-mcp-server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.fin
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./mathgenius:/app/mathgenius
+      - ./yfinance-mcp-server:/app/yfinance-mcp-server

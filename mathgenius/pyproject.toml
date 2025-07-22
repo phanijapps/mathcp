@@ -1,5 +1,5 @@
 [project]
-name = "mathgenius"
+name = "math-tools"
 version = "0.2.0"
 description = "Modular math library for foundational to advanced mathematics."
 requires-python = ">=3.12"

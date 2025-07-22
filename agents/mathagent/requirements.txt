@@ -1,0 +1,6 @@
+langgraph 
+langsmith
+langchain-openai
+langchain-community
+langchain-mcp-adapters
+pydantic

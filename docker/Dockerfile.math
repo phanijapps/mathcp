@@ -1,0 +1,23 @@
+# Use Python 3.12 base image
+FROM python:3.12-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy mathgenius package first to leverage Docker layer caching
+COPY mathgenius/ ./mathgenius/
+
+# Install mathgenius package in editable mode
+RUN pip install -e ./mathgenius
+
+# Copy math-mcp-server files
+COPY math-mcp-server/ ./math-mcp-server/
+
+# Install math-mcp-server dependencies
+RUN pip install -e ./math-mcp-server
+
+# Expose the MCP server port
+EXPOSE 8001
+
+# Initialize vector DB and start the server
+CMD ["sh", "-c", "cd math-mcp-server && python initialize_vector_db.py && python -m math_mcp_server.server"]

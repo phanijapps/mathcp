@@ -1,0 +1,28 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy and install mathgenius first
+COPY mathgenius/pyproject.toml ./mathgenius/
+COPY mathgenius/mathgenius/ ./mathgenius/mathgenius/
+RUN pip install -e ./mathgenius
+
+# Copy yfinance project files
+COPY yfinance-mcp-server/pyproject.toml .
+COPY yfinance-mcp-server/yfinance_mcp_server/ ./yfinance_mcp_server/
+
+# Install Python dependencies
+RUN pip install --upgrade pip && \
+    pip install -e .
+
+# Expose port
+EXPOSE 8002
+
+# Run the server
+CMD ["python", "-m", "yfinance_mcp_server.server"]
